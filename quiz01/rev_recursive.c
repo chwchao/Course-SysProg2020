@@ -15,16 +15,21 @@ void add_entry(node_t **head, int new_value)
     new_node->next = NULL;
 
     //assert(new_node);
-    while (*indirect)
+    while (*indirect) {
         indirect = &(*indirect)->next;
+    }
     *indirect = new_node;
 }
 
 node_t *rev_recursive_part(node_t *head)
 {
-    if(!head || !head->next) return head;
+    if(!head || !head->next) {
+        return head;
+    }
     node_t *new_head = rev_recursive_part(head->next);
-    if(head->next) head->next->next = head;
+    if(head->next) {
+        head->next->next = head;
+    }
     head->next = NULL;
     return new_head;
 }
@@ -36,8 +41,9 @@ void rev_recursive(node_t **head)
 
 void print_list(node_t *head)
 {
-    for (node_t *current = head; current; current = current->next)
+    for (node_t *current = head; current; current = current->next) {
         printf("%d ", current->value);
+    }
     printf("\n");
 }
 

@@ -16,15 +16,17 @@ void add_entry(node_t **head, int new_value)
     new_node->next = NULL;
 
     // assert(new_node);
-    while (*indirect)
+    while (*indirect) {
         indirect = &(*indirect)->next;
+    }
     *indirect = new_node;
 }
 
 void print_list(node_t *head)
 {
-    for (node_t *current = head; current; current = current->next)
+    for (node_t *current = head; current; current = current->next) {
         printf("%d ", current->value);
+    }
     printf("\n");
 }
 
@@ -35,18 +37,17 @@ void move_entry(node_t **head, int k)
     node_t *target = NULL;
 
     // Find the target node, if found, store & remove the node
-    while(*indirect)
-    {        
+    while(*indirect) {        
         k--;
-        if(k == 0)
-        {
+        if(k == 0) {
             target = *indirect;
             *indirect = (*indirect)->next;
             target->next = NULL;
         }
-        if(*indirect) indirect = &(*indirect)->next;
+        if(*indirect) {
+            indirect = &(*indirect)->next;
+        }
     }
-    
     // Add node to end of the list
     *indirect = target;
     return;
@@ -56,8 +57,7 @@ void move_entry(node_t **head, int k)
 int get_length(node_t *head)
 {
     int len = 0;
-    while(head)
-    {
+    while(head) {
         len++;
         head = head->next;
     }
@@ -68,8 +68,9 @@ int get_length(node_t *head)
 void Fisher_Yates_shuffle(node_t **head)
 {
     srand(time(NULL));
-    for(int left = get_length(*head); left > 0; left--)
+    for(int left = get_length(*head); left > 0; left--) {
         move_entry(head, rand() % left + 1);
+    }
     return;
 }
 

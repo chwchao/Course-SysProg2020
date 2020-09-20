@@ -15,16 +15,16 @@ void add_entry(node_t **head, int new_value)
     new_node->next = NULL;
 
     // assert(new_node);
-    while (*indirect)
+    while (*indirect) {
         indirect = &(*indirect)->next;
+    }
     *indirect = new_node;
 }
 
 /* NEW VERSION OF SWAP_PAIR */
 void swap_pair(node_t **head)
 {
-    for(node_t **node = head; *node && (*node)->next; node = &(*node)->next->next)
-    {
+    for(node_t **node = head; *node && (*node)->next; node = &(*node)->next->next) {
         node_t *tmp = *node;
         *node = (*node)->next;
         tmp->next = (*node)->next;
@@ -49,8 +49,9 @@ node_t *swap_pair(node_t *head)
 
 void print_list(node_t *head)
 {
-    for (node_t *current = head; current; current = current->next)
+    for (node_t *current = head; current; current = current->next) {
         printf("%d ", current->value);
+    }
     printf("\n");
 }
 

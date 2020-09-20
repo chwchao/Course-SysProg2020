@@ -15,8 +15,9 @@ void add_entry(node_t **head, int new_value)
     new_node->next = NULL;
 
     // assert(new_node);
-    while (*indirect)
+    while (*indirect) {
         indirect = &(*indirect)->next;
+    }
     *indirect = new_node;
 }
 
@@ -24,8 +25,7 @@ void add_entry(node_t **head, int new_value)
 void reverse(node_t **head)
 {
     node_t *cursor = NULL;
-    while(*head)
-    {
+    while(*head) {
         node_t *next = (*head)->next;
         (*head)->next = cursor; cursor = *head;
         *head = next;
@@ -50,8 +50,9 @@ node_t *reverse(node_t *head)
 
 void print_list(node_t *head)
 {
-    for (node_t *current = head; current; current = current->next)
+    for (node_t *current = head; current; current = current->next) {
         printf("%d ", current->value);
+    }
     printf("\n");
 }
 
